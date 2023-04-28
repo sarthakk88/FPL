@@ -132,7 +132,7 @@ def team_stats(response):
     h_players = pd.merge(players_data, fixtures_data, how="inner", left_on=["team"], right_on=["team_h"])
     a_players['diff'] = a_players['team_a_strength'] - a_players['team_h_strength']
     h_players['diff'] = h_players['team_h_strength'] - h_players['team_a_strength']
-    players_data = a_players.append(h_players)
+    players_data = pd.concat([h_players,a_players]) 
 
     players = [x['element'] for x in my_fpl_team["picks"]]
     my_team = players_data.loc[players_data.id.isin(players)]
@@ -534,7 +534,7 @@ def overall_player_stats(response):
     h_players = pd.merge(players_data, fixtures_data, how="inner", left_on=["team"], right_on=["team_h"])
     a_players['diff'] = a_players['team_a_strength'] - a_players['team_h_strength']
     h_players['diff'] = h_players['team_h_strength'] - h_players['team_a_strength']
-    players_data = a_players.append(h_players)
+    players_data = pd.concat([h_players,a_players]) 
 
     players_data = players_data[['first_name','second_name','id','team_name','chance_of_playing_next_round','chance_of_playing_this_round','event_points','form',
    'news', 'form_rank','diff', 'now_cost', 'points_per_game', 'team_a_name','team_h_name', "element_type" ]]
