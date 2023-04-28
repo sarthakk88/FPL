@@ -65,7 +65,12 @@ def parse_epl_data():
     teamData,playerData = get_epl_data()
     new_team_data = []
     for t,v in teamData.items():
-        team = pd.DataFrame(teamData[t]["history"][-5:]).sum().drop("date")
+        team = pd.DataFrame(teamData[t]["history"][-5:]).drop('date',axis=1)
+
+        cols = team.select_dtypes(exclude=['float']).columns
+        team[cols] = team[cols].apply(pd.to_numeric, downcast='float', errors='coerce')
+        team = team.sum()
+
         team["team"] = teamData[t]["title"]
         new_team_data += [team]
     team_frame = pd.DataFrame(new_team_data)
