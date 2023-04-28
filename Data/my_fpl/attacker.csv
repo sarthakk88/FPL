@@ -1,0 +1,5 @@
+first_name,second_name,id,minutes,xG,xA,total_points,xPoints,total_points_Home/Away,xPoints_Home/Away,goal_scored,assists,bonus,form,diff,team_against,Home/Away
+Erling,Haaland,318,383,5.300000000000001,0.27,48,36.010000000000005,51,32.24,6,3,8,9.5,220,West Ham,Home
+Ollie,Watkins,40,450,2.76,0.32,36,29.0,33,32.62,4,1,8,7.3,-55,Man Utd,Away
+Erling,Haaland,318,383,5.300000000000001,0.27,48,36.010000000000005,36,28.91,6,3,8,9.5,265,Fulham,Away
+Harry,Kane,427,450,2.7800000000000002,0.81,35,30.55,23,22.769999999999996,3,2,8,7.0,0,Liverpool,Away

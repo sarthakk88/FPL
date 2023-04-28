@@ -1,0 +1,10 @@
+first_name,second_name,id,minutes,xG,xA,xGC,total_points,xPoints,total_points_Home/Away,xPoints_Home/Away,goal_scored,assists,clean_sheets,goals_conceded,bonus,form,diff,team_against,Home/Away
+Bukayo,Saka,13,379,1.4100000000000001,0.88,9.53,17,18.18,46,27.5,1,1,0,11,3,3.4,25,Chelsea,Home
+Solly,March,107,450,1.3299999999999998,1.7,7.33,25,24.32,22,24.25,0,4,1,9,2,5.0,80,Wolves,Home
+Solly,March,107,450,1.3299999999999998,1.7,7.33,25,24.32,22,24.25,0,4,1,9,2,5.0,-50,Man Utd,Home
+Alexis,Mac Allister,116,432,1.97,1.0899999999999999,7.26,15,22.69,28,30.77,1,0,1,9,0,3.0,80,Wolves,Home
+Alexis,Mac Allister,116,432,1.97,1.0899999999999999,7.26,15,22.69,28,30.77,1,0,1,9,0,3.0,-50,Man Utd,Home
+Jack,Grealish,305,427,1.04,1.35,1.93,35,26.32,28,22.6,2,3,2,3,5,8.0,220,West Ham,Home
+Marcus,Rashford,335,440,1.98,0.3,8.6,33,25.17,42,29.34,2,2,3,4,4,6.0,55,Aston Villa,Home
+Jack,Grealish,305,427,1.04,1.35,1.93,35,26.32,31,20.65,2,3,2,3,5,8.0,265,Fulham,Away
+Marcus,Rashford,335,440,1.98,0.3,8.6,33,25.17,31,20.79,2,2,3,4,4,6.0,50,Brighton,Away

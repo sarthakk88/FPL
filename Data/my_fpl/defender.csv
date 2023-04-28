@@ -1,0 +1,5 @@
+first_name,second_name,id,minutes,xG,xA,xGC,total_points,xPoints,total_points_Home/Away,xPoints_Home/Away,goal_scored,assists,clean_sheets,goals_conceded,bonus,form,diff,team_against,Home/Away
+Benjamin,White,10,450,0.8,0.54,9.97,18,18.3,30,21.209999999999997,1,2,0,12,2,3.6,25,Chelsea,Home
+Pervis,Estupiñán,586,424,0.43,0.6000000000000001,6.41,11,16.660000000000004,29,23.229999999999997,0,0,1,8,0,2.2,80,Wolves,Home
+Pervis,Estupiñán,586,424,0.43,0.6000000000000001,6.41,11,16.660000000000004,29,23.229999999999997,0,0,1,8,0,2.2,-50,Man Utd,Home
+Ben,Chilwell,139,369,0.36,0.99,4.49,11,21.490000000000002,11,15.219999999999999,0,0,1,6,3,2.2,-25,Arsenal,Away
