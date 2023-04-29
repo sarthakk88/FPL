@@ -33,12 +33,14 @@ def get_team_data(data):
 
         temp = pd.DataFrame({"id": [data[i]["id"]],"team":[data[i]["title"]]})
         history = pd.DataFrame(data[i]["history"])
-        history = history.drop(["result","date","h_a"],axis=1)
+        history = history.drop(["result","date","h_a"],axis=1).tail(5)
         join = history.mean().to_frame().T
         temp = pd.concat([temp,join], axis=1)
         teams_stats = pd.concat([teams_stats,temp])
 
     teams_stats = teams_stats.reset_index(drop=True, inplace=False)
+
+    return teams_stats
     
 def get_data(url):
     response = requests.get(url)
