@@ -112,7 +112,7 @@ def parse_epl_data():
 
         player_frame["id"].append(d["id"])
         player_frame["Player"].append(d["player_name"])
-            
+        print(d["player_name"])
     player_frame = pd.DataFrame(player_frame)
     
     return player_frame
