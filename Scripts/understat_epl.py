@@ -6,7 +6,40 @@ import codecs
 import pandas as pd
 import os
 import csv
+import nest_asyncio
+nest_asyncio.apply()
 
+import asyncio
+import json
+import pandas as pd
+import aiohttp
+import asyncio
+
+from understat import Understat
+
+def get_team_data(data):
+
+    teams_stats = pd.DataFrame(columns=['id', 'team', 'xG', 'xGA', 'npxG', 'npxGA', 'ppda', 'ppda_allowed', 'deep',
+       'deep_allowed', 'scored', 'missed', 'xpts', 'wins', 'draws', 'loses',
+       'pts', 'npxGD'])
+
+    for i in range(0,len(data)):
+
+        for j in range(0,len(data[i]["history"])):
+            
+            history = data[i]["history"][j]
+            history["ppda"] = history["ppda"]["att"]/history["ppda"]["def"]
+            history["ppda_allowed"] = history["ppda_allowed"]["att"]/history["ppda_allowed"]["def"]
+
+        temp = pd.DataFrame({"id": [data[i]["id"]],"team":[data[i]["title"]]})
+        history = pd.DataFrame(data[i]["history"])
+        history = history.drop(["result","date","h_a"],axis=1)
+        join = history.mean().to_frame().T
+        temp = pd.concat([temp,join], axis=1)
+        teams_stats = pd.concat([teams_stats,temp])
+
+    teams_stats = teams_stats.reset_index(drop=True, inplace=False)
+    
 def get_data(url):
     response = requests.get(url)
     if response.status_code != 200:
@@ -63,18 +96,7 @@ def get_player_data(id):
 
 def parse_epl_data():
     teamData,playerData = get_epl_data()
-    new_team_data = []
-    for t,v in teamData.items():
-        team = pd.DataFrame(teamData[t]["history"][-5:]).drop('date',axis=1)
 
-        cols = team.select_dtypes(exclude=['float']).columns
-        team[cols] = team[cols].apply(pd.to_numeric, downcast='float', errors='coerce')
-        team = team.sum()
-
-        team["team"] = teamData[t]["title"]
-        new_team_data += [team]
-    team_frame = pd.DataFrame(new_team_data)
-    team_frame = team_frame[ ['team'] + [ col for col in team_frame.columns if col != 'team' ] ]
     player_frame = {"id":[],"Player":[],"goals":[],"shots":[],"xG":[],"xA":[],"assists":[]
                  ,"key_passes":[],"npg":[],"npxG":[],"xGChain":[],"xGBuildup":[]}
     columns = ["goals","shots","xG","xA","assists","key_passes","npg","npxG","xGChain","xGBuildup"]
@@ -91,7 +113,7 @@ def parse_epl_data():
             
     player_frame = pd.DataFrame(player_frame)
     
-    return team_frame,player_frame
+    return player_frame
 
 class PlayerID:
     def __init__(self, us_id, fpl_id, us_name, fpl_name):
